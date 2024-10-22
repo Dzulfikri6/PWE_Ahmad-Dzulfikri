@@ -3,7 +3,7 @@
 @section('/produk')
 <div class="main-content">
         <div>
-            <form action="{{url('/produk/add/')}}" method="POST">
+            <form action="{{url('/produk/add/')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nama_produk">Nama Produk</label>
@@ -20,6 +20,10 @@
                 <div class="form-group">
                     <label for="jumlah_produk">Jumlah Produk</label>
                     <input type="text" name="jumlah_produk" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Gambar</label>
+                    <input type="file" name="image" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>

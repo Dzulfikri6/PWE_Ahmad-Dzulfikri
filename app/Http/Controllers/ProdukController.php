@@ -18,11 +18,18 @@ class ProdukController extends Controller
         return view('component.produk',['produk'=>$produk]);
     }
     public function CreateProduk(Request $request){
+        $imageName=null;
+        if($request->hasFile('image')){
+            $imageFile=$request->file('image');
+            $imageName=time().'_'.$imageFile->getClientOriginalName();
+            $imageFile->storeAs('public/image',$imageName);
+        }
         produk::create([
             'nama_produk'=>$request->nama_produk,
             'deskripsi'=>$request->deskripsi,
             'harga'=>$request->harga,
-            'jumlah_produk'=>$request->jumlah_produk
+            'jumlah_produk'=>$request->jumlah_produk,
+            'image'=>$imageName
         ]);
         return redirect('/produk');
     }
@@ -40,11 +47,18 @@ class ProdukController extends Controller
     }
 
     public function updateProduk(Request $request,$kode_produk){
+        $imageName=null;
+        if($request->hasFile('image')){
+            $imageFile=$request->file('image');
+            $imageName=time().'_'.$imageFile->getClientOriginalName();
+            $imageFile->storeAs('public/image',$imageName);
+        }
         Produk::where('kode_produk', $kode_produk)->update([
             'nama_produk'=>$request->nama_produk,
             'deskripsi'=>$request->deskripsi,
             'harga'=>$request->harga,
-            'jumlah_produk'=>$request->jumlah_produk
+            'jumlah_produk'=>$request->jumlah_produk,
+            'image'=>$imageName
         ]);
         return redirect('/produk');
     }

@@ -15,8 +15,11 @@ Route::get('/produk', function () {
 
 Route::get('/',[homepageController::class, 'homeView']);
 Route::get('/produk',[ProdukController::class, 'viewProduk']);
+
 Route::get('/produk/add',[ProdukController::class, 'ViewAddProduk']);
 Route::post('/produk/add',[ProdukController::class, 'CreateProduk']);
+
 Route::delete('/produk/delete/{kode_produk}',[ProdukController::class,'deleteProduk']);
+
 Route::get('/produk/edit/{kode_produk}',[ProdukController::class,'viewEditProduk']);
 Route::put('/produk/edit/{kode_produk}',[ProdukController::class,'updateProduk']);
