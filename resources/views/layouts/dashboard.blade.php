@@ -15,6 +15,7 @@
     @yield('/produk')
     @yield('/addProduk')
     @yield('/editProduk')
+    @yield('/laporan')
     @include('partials.footer')
     </div>
 </body>

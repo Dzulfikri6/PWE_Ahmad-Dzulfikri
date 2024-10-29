@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('/editProduk')
-<div class="content-main">
+<div class="main-content">
     <form action="{{url('/produk/edit/'.$ubahproduk->kode_produk)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')

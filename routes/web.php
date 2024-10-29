@@ -23,3 +23,6 @@ Route::delete('/produk/delete/{kode_produk}',[ProdukController::class,'deletePro
 
 Route::get('/produk/edit/{kode_produk}',[ProdukController::class,'viewEditProduk']);
 Route::put('/produk/edit/{kode_produk}',[ProdukController::class,'updateProduk']);
+
+Route::get('/laporan',[ProdukController::class,'ViewLaporan']);
+Route::get('/report',[ProdukController::class,'print']);
