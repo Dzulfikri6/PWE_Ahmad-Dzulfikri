@@ -3,7 +3,7 @@
 @section('/produk')
 <div class="main-content">
         <div>
-            <form action="{{url('/produk/add/')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url(Auth::user()->role.'/produk/add/')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="nama_produk">Nama Produk</label>

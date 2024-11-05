@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProdukRequest;
 use App\Http\Requests\UpdateProdukRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
@@ -15,6 +16,8 @@ class ProdukController extends Controller
      */
     public function viewProduk()
     {
+        $isAdmin=Auth::user()->role=='admin';
+        $produk=$isAdmin?Produk::all():Produk::where('user_id',Auth::user()->id->get());
         $produk=Produk::all();
         return view('component.produk',['produk'=>$produk]);
     }
@@ -30,16 +33,17 @@ class ProdukController extends Controller
             'deskripsi'=>$request->deskripsi,
             'harga'=>$request->harga,
             'jumlah_produk'=>$request->jumlah_produk,
-            'image'=>$imageName
+            'image'=>$imageName,
+            'user_id'=>Auth::user()->id
         ]);
-        return redirect('/produk');
+        return redirect(Auth::user()->role.'/produk');
     }
     public function ViewAddProduk(){
         return view('component.addProduk');
     }
     public function deleteProduk($kode_produk){
         produk::where('kode_produk',$kode_produk)->delete();
-        return redirect('/produk');
+        return redirect(Auth::user()->role.'/produk');
     }
 
     public function viewEditProduk($kode_produk){
@@ -61,7 +65,7 @@ class ProdukController extends Controller
             'jumlah_produk'=>$request->jumlah_produk,
             'image'=>$imageName
         ]);
-        return redirect('/produk');
+        return redirect(Auth::user()->role.'/produk');
     }
     public function ViewLaporan(){
         $products=Produk::all();

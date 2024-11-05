@@ -2,7 +2,7 @@
 
 @section('/editProduk')
 <div class="main-content">
-    <form action="{{url('/produk/edit/'.$ubahproduk->kode_produk)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{url(Auth::user()->role.'/produk/edit/'.$ubahproduk->kode_produk)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
