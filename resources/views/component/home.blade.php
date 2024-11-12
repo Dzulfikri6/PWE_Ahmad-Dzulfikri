@@ -9,7 +9,7 @@
     <div class="cards">
         <div class="card">
             <h3>Total Produk</h3>
-            <p id="total-product">{{$totalProductsQuery}}</p>
+            <p id="total-product">{{$totalProducts}}</p>
         </div>
         <div class="card">
             <h3>Penjualan Hari Ini</h3>

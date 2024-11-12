@@ -11,15 +11,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function viewProduk()
     {
-        $isAdmin=Auth::user()->role=='admin';
-        $produk=$isAdmin?Produk::all():Produk::where('user_id',Auth::user()->id->get());
-        $produk=Produk::all();
-        return view('component.produk',['produk'=>$produk]);
+    $isAdmin = Auth::user()->role == 'admin';
+
+    // Jika admin, tampilkan semua produk, jika user biasa, tampilkan produk yang terkait dengan user tersebut
+    if ($isAdmin) {
+        $produk = Produk::all(); // Admin dapat melihat semua produk
+    } else {
+        $produk = Produk::where('user_id', Auth::user()->id)->get(); // User hanya melihat produk yang terkait dengan dirinya
+    }
+
+    return view('component.produk', ['produk' => $produk]);
     }
     public function CreateProduk(Request $request){
         $imageName=null;

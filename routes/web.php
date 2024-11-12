@@ -6,13 +6,17 @@ use App\Http\Controllers\homepageController;
 use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[AuthController::class,'showLoginForm']);
-    Route::post('/',[AuthController::class,'login']);
+Route::get('/', function(){
+    return view('component.login');
+});
 
-    Route::get('/register',[AuthController::class,'showRegisterForm']);
-    Route::post('/',[AuthController::class,'showLoginForm']);
+Route::get('/login',[AuthController::class,'showLoginForm']);
+Route::post('/login',[AuthController::class,'login']);
 
-    Route::post('/logout',[AuthController::class, 'logout']);
+Route::get('/register',[AuthController::class,'showRegisterForm']);
+Route::post('/register',[AuthController::class,'Register']);
+
+Route::post('/logout',[AuthController::class, 'logout']);
 
 Route::middleware(['auth','user-access:user'])->prefix('user')->group(function(){
     Route::get('/home',[homepageController::class, 'homeView']);

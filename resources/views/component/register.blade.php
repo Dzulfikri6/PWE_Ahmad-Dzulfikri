@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h2 class="text-center mt-5">Register</h2>
-                <form method="POST" action="{{url('/') }}">
+                <form method="POST" action="{{url('/register') }}">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>

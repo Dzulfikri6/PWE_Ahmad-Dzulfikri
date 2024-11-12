@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <h2 class="text-center mt-5">Login</h2>
-                <form method="POST" action="{{url('/home') }}">
+                <form method="POST" action="{{url('/login') }}">
                     @csrf
                     <div class="form-group">
                         <label for="email">Email address</label>
