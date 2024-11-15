@@ -28,7 +28,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{url('report')}}" class="btn btn-secondary w-100 d-flex justify-content-center align-items-center text-white cursor-pointer">Export to PDF</a>
+            <a href="{{url(Auth::user()->role.'/report')}}" class="btn btn-secondary w-100 d-flex justify-content-center align-items-center text-white cursor-pointer">Export to PDF</a>
         </div>
     </div>
 @endsection
